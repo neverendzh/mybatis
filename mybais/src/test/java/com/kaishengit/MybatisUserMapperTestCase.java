@@ -32,7 +32,6 @@ public class MybatisUserMapperTestCase {
         User user = userMapper.findById(4);
         System.out.println(user);
         System.out.println(user.getUserName()+"----->"+user.getDept().getDeptDepartment());
-		System.out.println("mybatis协作者提交测试");
     }
 
 
