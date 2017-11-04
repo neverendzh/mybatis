@@ -19,17 +19,17 @@
     </insert>
     <!--resultMap是设置封装的对应关系，可以自定义设置，如果不设置那么就使用resultType属性是类对象小写的前提是配置了
     自动注册包下的类，也可以是类的完全限定名-->
-    <resultMap id="userMap" type="com.kaishengit.entity.User">
+    <!--<resultMap id="userMap" type="com.kaishengit.entity.User">
         <id column="id" property="id"/>
         <result column="user_name" property="userName"/>
         <result column="passwords" property="passwords"/>
         <result column="address" property="address"/>
         <result column="dept_id" property="deptId"/>
-    </resultMap>
+    </resultMap>-->
     <!--resultType 相当于返回值，会自动判断,也就是在后台设置对应关系疯转在类对象中-->
     <!--如果不使用resultType那么就使用resultMap-->
     <!--如果指定了封装对弈关系那么就不需要在mybatis.xml中配置将数据库中下划线风格的命名映射为Java中驼峰命名风格-->
-    <select id="findAll"  resultMap="userMap">
+    <select id="findAll" resultType="user">
         SELECT * FROM t_user
     </select>
 

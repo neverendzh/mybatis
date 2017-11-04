@@ -24,6 +24,14 @@ public class Dept {
         this.deptDepartment = deptDepartment;
     }
 
+    public Dept(Integer id, String deptDepartment) {
+        this.id = id;
+        this.deptDepartment = deptDepartment;
+    }
+
+    public Dept() {
+    }
+
     @Override
     public String toString() {
         return "Dept{" +

@@ -7,5 +7,6 @@ import com.kaishengit.entity.Account;
  * Created by Administrator on 2017/11/4.
  */
 public interface AccountMapper {
-    Account findById(Integer id);
+    Account findById(Long id);
+    Account findById2(Long id);
 }

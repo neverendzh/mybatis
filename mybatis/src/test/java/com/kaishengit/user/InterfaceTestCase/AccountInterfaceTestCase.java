@@ -15,8 +15,18 @@ public class AccountInterfaceTestCase extends MybatisUtil{
     public void findById(){
         SqlSession sqlSession = getSqlSession();
        AccountMapper accountMapper =  sqlSession.getMapper(AccountMapper.class);
-       Account account = accountMapper.findById(1);
+       Account account = accountMapper.findById(1L);
        System.out.println(account);
+       System.out.println(account.getUserName()+"--->"+account.getDept().getDeptDepartment());
+    }
+
+    @Test
+    public void findById2(){
+        SqlSession sqlSession = getSqlSession();
+        AccountMapper accountMapper =  sqlSession.getMapper(AccountMapper.class);
+        Account account = accountMapper.findById2(1L);
+        System.out.println(account);
+        System.out.println(account.getUserName()+"--->"+account.getDept().getDeptDepartment());
     }
 
 }

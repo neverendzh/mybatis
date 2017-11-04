@@ -5,12 +5,14 @@ package com.kaishengit.entity;
  * Created by Administrator on 2017/11/4.
  */
 public class Account {
-    private Integer id;
+    private int id;
     private String userName;
     private String password;
     private String address;
-    private Integer deptId;
+    private int deptId;
     private Dept dept;
+
+    public Account() {}
 
     public Account(int id, String userName, String password, String address, int deptId, Dept dept) {
         this.id = id;

@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--将数据库中下划线风格的命名映射为Java中驼峰命名风格-->
-    <!--<settings>-->
-        <!--<setting name="mapUnderscoreToCamelCase" value="true"/>-->
-    <!--</settings>-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <!--配置别名-->
      <typeAliases>
          <!--这种方法一个类需要配置一个-->
