@@ -1,4 +1,4 @@
-package com.kaishengit;
+package com.kaishengit.user;
 
 import com.kaishengit.entity.User;
 import com.kaishengit.util.MybatisUtil;

@@ -3,11 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kaishengit.mapper.UserMapper">
-    <insert id="save" parameterType="user">
-       SELECT
-	      *
-        FROM
-            t_user INSERT INTO t_user (
+    <!--useGeneratedKeys用于返回执行sql影响的行数，keyProperty设置生成主键的值返回给对象中的那个属性-->
+    <insert id="save" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        INSERT
+        INTO t_user (
                 user_name,
                 passwords,
                 address,
@@ -18,10 +17,56 @@
                 #{userName},#{passwords},#{address},#{deptId})
 
     </insert>
-
-    <!--resultType 相当于返回值，会自动判断-->
-    <select id="findAll" resultType="user">
+    <!--resultMap是设置封装的对应关系，可以自定义设置，如果不设置那么就使用resultType属性是类对象小写的前提是配置了
+    自动注册包下的类，也可以是类的完全限定名-->
+    <resultMap id="userMap" type="com.kaishengit.entity.User">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="passwords" property="passwords"/>
+        <result column="address" property="address"/>
+        <result column="dept_id" property="deptId"/>
+    </resultMap>
+    <!--resultType 相当于返回值，会自动判断,也就是在后台设置对应关系疯转在类对象中-->
+    <!--如果不使用resultType那么就使用resultMap-->
+    <!--如果指定了封装对弈关系那么就不需要在mybatis.xml中配置将数据库中下划线风格的命名映射为Java中驼峰命名风格-->
+    <select id="findAll"  resultMap="userMap">
         SELECT * FROM t_user
+    </select>
+
+    <select id="page" parameterType="map" resultType="user" >
+        SELECT
+            *
+        FROM
+            t_user
+        limit
+            #{offset},#{size}
+    </select>
+
+    <select id="page1" parameterType="map" resultType="user" >
+        SELECT
+        *
+        FROM
+        t_user
+        limit
+        #{arg0},#{arg1}
+    </select>
+
+    <select id="page2" parameterType="map" resultType="user" >
+        SELECT
+        *
+        FROM
+        t_user
+        limit
+        #{param1},#{param2}
+    </select>
+
+    <select id="page3" parameterType="map" resultType="user" >
+        SELECT
+        *
+        FROM
+        t_user
+        limit
+        #{offset},#{size}
     </select>
 
     <select id="findById" parameterType="long" resultType="user">
@@ -47,4 +92,5 @@
         WHERE
             id = #{id}
     </delete>
+
 </mapper>
