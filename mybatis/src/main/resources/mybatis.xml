@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--将数据库中下划线风格的命名映射为Java中驼峰命名风格-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!--配置别名-->
+     <typeAliases>
+         <!--这种方法一个类需要配置一个-->
+         <!--<typeAlias type="com.kaishengit.entity.User" alias="user"/>-->
+         <!--自动注册com.kaishengit.entity包下所有的类并且为每一个类注册一个以小写字母开头的名称-->
+         <package name="com.kaishengit.entity"/>
+
+     </typeAliases>
+    <!--配置数据库环境，支持多个数据库环境-->
+    <environments default="dev">
+        <environment id="dev"><!--数据库配置，可以配置多个这样的节点。支持不同的数据库环境-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED"><!--POLLED表示数据库连接池-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mydb"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置mapper文件，mapper文件相当于原来的dao层-->
+    <mappers>
+        <!--classpath中的路径-->
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+    <insert id="save" parameterType="user">
+       SELECT
+	      *
+        FROM
+            t_user INSERT INTO t_user (
+                user_name,
+                passwords,
+                address,
+                dept_id
+            )
+        VALUES
+            (
+                #{userName},#{passwords},#{address},#{deptId})
+
+    </insert>
+
+    <!--resultType 相当于返回值，会自动判断-->
+    <select id="findAll" resultType="user">
+        SELECT * FROM t_user
+    </select>
+
+    <select id="findById" parameterType="long" resultType="user">
+          SELECT
+            *
+        FROM
+            t_user
+        WHERE
+            id = #{id};
+    </select>
+
+    <update id="update" parameterType="user">
+        UPDATE t_user
+        SET user_name = #{userName}
+        WHERE
+            id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE
+        FROM
+            t_user
+        WHERE
+            id = #{id}
+    </delete>
+</mapper>
