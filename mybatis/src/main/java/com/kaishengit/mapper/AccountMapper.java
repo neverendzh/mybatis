@@ -9,4 +9,5 @@ import com.kaishengit.entity.Account;
 public interface AccountMapper {
     Account findById(Long id);
     Account findById2(Long id);
+    Account findByIdWithTag(Long id);
 }

@@ -1,5 +1,7 @@
 package com.kaishengit.entity;
 
+import java.util.List;
+
 /**
  * @author zh
  * Created by Administrator on 2017/11/4.
@@ -11,6 +13,7 @@ public class Account {
     private String address;
     private int deptId;
     private Dept dept;
+    private List<Tag> tagList;
 
     public Account() {}
 
@@ -23,6 +26,7 @@ public class Account {
         this.dept = dept;
     }
 
+
     @Override
     public String toString() {
         return "Account{" +
@@ -33,6 +37,14 @@ public class Account {
                 ", deptId=" + deptId +
                 ", dept=" + dept +
                 '}';
+    }
+
+    public List<Tag> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Tag> tagList) {
+        this.tagList = tagList;
     }
 
     public Dept getDept() {
